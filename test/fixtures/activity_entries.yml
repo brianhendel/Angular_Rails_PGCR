@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  gamertag: MyString
+  score: 1
+  kills: 1
+  deaths: 1
+  activity: one
+
+two:
+  gamertag: MyString
+  score: 1
+  kills: 1
+  deaths: 1
+  activity: two

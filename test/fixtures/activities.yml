@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activityId: 1
+  mode: 1
+  mainScore: 1
+  mainKills: 1
+  mainDeaths: 1
+  mainStanding: MyString
+
+two:
+  activityId: 1
+  mode: 1
+  mainScore: 1
+  mainKills: 1
+  mainDeaths: 1
+  mainStanding: MyString

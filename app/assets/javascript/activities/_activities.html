@@ -1,0 +1,26 @@
+
+<h1>Activity Page</h1>
+<div class="container">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Player</th>
+				<th>Score</th>
+				<th>Kills</th>
+				<th>Deaths</th>
+				<th>K/D Ratio</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="p in players | orderBy: '-score'" ng-click="editFireteam(p)">
+				<td>{{p.gamertag}}</td>
+				<td>{{p.score}}</td>
+				<td>{{p.kills}}</td>
+				<td>{{p.deaths}}</td>
+				<td>{{p.kills/p.deaths}}</td>
+			</tr>
+		</tbody>
+
+	</table>
+	{{fireteam}}
+</div>

@@ -1,0 +1,52 @@
+<div class="container">
+	<form ng-submit="setMainGt()">
+		<input type="text" ng-model="mainGt"></input>
+		<button type="submit" class="btn btn-primary">Get Recent Games</button> {{mainGt}}
+	</form>
+</div>
+
+<div ng-show="mainGtSet" class="container">
+	<h3>{{mainGt}}'s Recent Activities</h3>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12 col-md-4 emblem-container" ng-repeat="char in memberData.Response.data.characters" >
+				<div class="emblem-background" ng-style="{'background-image': 'url(https://bungie.net' + char.backgroundPath + ')'}">
+					<img class="emblem-icon" ng-src="https://bungie.net{{char.emblemPath}}">
+					<span class="gamertag-emblem">{{mainGt}}</span>
+					<span class="light">{{char.characterBase.powerLevel}}</span>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Game Type</th>
+				<th class="text-center">Score</th>
+				<th class="text-center">Kills</th>
+				<th class="text-center">Deaths</th>
+				<th class="text-center">K/D Ratio</th>
+				<th class="text-center">Standing</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="a in activities | orderBy: '-activitiyId'" ng-click="selectActivity(a)">
+				<td>{{a.mode}}</td>
+				<td class="text-center">{{a.mainScore}}</td>
+				<td class="text-center">{{a.mainKills}}</td>
+				<td class="text-center">{{a.mainDeaths}}</td>
+				<td class="text-center">{{(a.mainKills/a.mainDeaths).toFixed(2)}}</td>
+				<td class="text-center">{{a.mainStanding}}</td>
+			</tr>
+		</tbody>
+
+	</table>
+	{{selectedActivity}}
+</div>
+
+<!--
+<h4>{{memberData.Response.data.membershipId}}</h4>
+
+-->
