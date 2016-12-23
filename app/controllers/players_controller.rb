@@ -1,9 +1,5 @@
 class PlayersController < ApplicationController   
 
-    def index
-        respond_with Player.all
-    end
-    
     def create
         puts "player create action hit"
         @player = Player.new(player_params)
@@ -22,13 +18,6 @@ class PlayersController < ApplicationController
 
         #@player.save
     end
-
-    def show
-        respond_with Post.find(params[:gamertag])
-    end
-
-
-
 
     private
         def player_params

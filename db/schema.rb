@@ -10,28 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216031833) do
+ActiveRecord::Schema.define(version: 20161221074215) do
 
   create_table "activities", force: :cascade do |t|
-    t.integer  "activityId"
-    t.integer  "mode"
-    t.integer  "mainScore"
-    t.integer  "mainKills"
-    t.integer  "mainDeaths"
+    t.integer  "charId",        limit: 8
+    t.integer  "membership_id", limit: 8
+    t.integer  "activityId",    limit: 8
+    t.integer  "mode",          limit: 8
+    t.integer  "mainScore",     limit: 8
+    t.integer  "mainKills",     limit: 8
+    t.integer  "mainDeaths",    limit: 8
     t.string   "mainStanding"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  create_table "activity_entries", force: :cascade do |t|
-    t.string   "gamertag"
-    t.integer  "score"
-    t.integer  "kills"
-    t.integer  "deaths"
-    t.integer  "activity_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.index ["activity_id"], name: "index_activity_entries_on_activity_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "players", force: :cascade do |t|
@@ -40,6 +31,12 @@ ActiveRecord::Schema.define(version: 20161216031833) do
     t.integer  "charId_1",   limit: 8
     t.integer  "charId_2",   limit: 8
     t.integer  "charId_3",   limit: 8
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "reports", force: :cascade do |t|
+    t.integer  "activityId", limit: 8
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

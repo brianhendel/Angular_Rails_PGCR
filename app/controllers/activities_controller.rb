@@ -1,22 +1,17 @@
 class ActivitiesController < ApplicationController
 
-    def index
-        respond_with Activity.all
-    end
-
     def create
-        respond_with Activity.create(act_params)
+        puts "Activity create action hit"
+        @activity = Activity.new(activity_params)
+        activity_data = @activity.getActivities(@activity.charId, @activity.membership_id)
+
+        puts activity_data.to_json
+        render json: activity_data
     end
-
-    def show
-        respond_with Activity.find(params[:activityId])
-    end
-
-
 
     private
-        def act_params
-            params.require(:activity).permit(:activityId)
-        end
+    def activity_params
+        params.require(:activity).permit(:charId, :membership_id)
+    end
 
 end

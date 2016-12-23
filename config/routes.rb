@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root to: 'application#angular'
 
   resources :players, only: [:create]
-
-
+  resources :activities, only: [:create]
+  resources :reports, only: [:create]
 end

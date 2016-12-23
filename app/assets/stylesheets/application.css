@@ -45,3 +45,13 @@
     font-size: 30px;
     color: #f5dc56
 }
+
+.table > tbody > tr > td {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+.table > .table-striped > tbody > tr > .selected {
+    background-color: yellow;
+    color: blue;
+}

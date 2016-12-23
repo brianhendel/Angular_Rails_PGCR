@@ -1,23 +1,20 @@
-.factory('activities', [
+app.factory('activities', [
 		'$http',
 		function ($http) {
 			var a = {
-				activities: [
-				]
+				activities: []
 			};
 
-			a.getAll = function() {
-				return $http.get('/activities.json').success(function(data) {
-					angular.copy(data, a.activities)
+			a.getActivityData = function(charId, membership_id) {
+				$http.post('/activities', {"activity": { "charId": charId, "membership_id": membership_id}})
+				.then(function(response) {
+					console.log(response.data)
+					angular.copy(response.data, a.activities)
 				})
-			}
-
-
+			};
 			return a;
 		}
 	])
-
-
 
 
 /*
