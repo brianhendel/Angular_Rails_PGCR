@@ -24,7 +24,7 @@ app.controller('MainCtrl', [
 			$scope.charSet = true;
 			console.log(charId)
 			activities.getActivityData(charId, membership_id);
-		}
+		};
 
 		$scope.selectActivity = function (activity) {
 			$scope.actSet = activity.activityDetails.instanceId;

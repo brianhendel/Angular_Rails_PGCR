@@ -5,7 +5,7 @@ class ReportsController < ApplicationController
         @report = Report.new(report_params)
         report_detail = @report.getReport(@report.activityId)
 
-        puts report_detail.to_json
+        #puts report_detail.to_json
         render json: report_detail
     end
 

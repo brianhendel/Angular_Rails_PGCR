@@ -53,24 +53,52 @@
 			</table>
 		</div>
 
-		<div ng-show="charSet" class="col-xs-12 col-md-6">
+		<div ng-show="actSet" class="col-xs-12 col-md-6">
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>Kill Type</th>
 						<th class="text-center">{{mainGt}}</th>
 						<th class="text-center">Fireteam</th>
-						<th class="text-center">Allies</th>
-						<th class="text-center">Enemies</th>
+						<th class="text-center">Alpha</th>
+						<th class="text-center">Bravo</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="a in activities.Response.data.activities" ng-click="selectActivity(a)">
-						<td>{{a.activityDetails.mode}}</td>
-						<td class="text-center">{{a.values.score.basic.displayValue}}</td>
-						<td class="text-center">{{a.values.kills.basic.displayValue}}</td>
-						<td class="text-center">{{a.values.deaths.basic.displayValue}}</td>
-						<td class="text-center">{{a.values.assists.basic.displayValue}}</td>
+					<tr ng-click="">
+						<td>Primary Total</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Special Total</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Heavy Total</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Ability Total</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Total Kills</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
+						<td class="text-center">{{}}</td>
 					</tr>
 				</tbody>
 			</table>
