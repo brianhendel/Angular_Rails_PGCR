@@ -5,8 +5,8 @@ app.factory('report', [
 				report: []
 			};
 
-			r.getReport = function(activityId) {
-				$http.post('/reports', {"report": { "activityId": activityId}})
+			r.getReport = function(activityId, mainGt) {
+				$http.post('/reports', {"report": { "activityId": activityId, "mainGt": mainGt}})
 				.then(function(response) {
 					console.log(response.data)
 					angular.copy(response.data, r.report)

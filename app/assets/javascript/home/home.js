@@ -26,9 +26,9 @@ app.controller('MainCtrl', [
 			activities.getActivityData(charId, membership_id);
 		};
 
-		$scope.selectActivity = function (activity) {
+		$scope.selectActivity = function (activity, mainGt) {
 			$scope.actSet = activity.activityDetails.instanceId;
-			report.getReport(activity.activityDetails.instanceId);
+			report.getReport(activity.activityDetails.instanceId, mainGt);
 		};
 
 		$scope.editFireteam = function (player) {

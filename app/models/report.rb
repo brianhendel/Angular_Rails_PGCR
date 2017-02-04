@@ -34,12 +34,27 @@ class Report < ApplicationRecord
         return entry_array
     end
 
-	def createTeamDetail(player_array)
+	def createTeamDetail(player_array, mainGt)
 		#kill_types = ["HandCannon", "ScoutRifle", "PulseRifle", "AutoRifle", "FusionRifle", "Sniper", "SideArm", "Shotgun", "RocketLauncher", "Machinegun", "Sword", "Grenade", "Melee", "Super"]
-		team_hash = {:alpha => {:kills => {}}, :bravo => {:kills => {}}, :names => ["Hand Cannon", "Scout Rifle", "Pulse Rifle", "Auto Rifle", "Fusion Rifle", "Sniper", "Sidearm", "Shotgun", "Rocket Launcher", "Heavy Machinegun", "Sword", "Grenade", "Melee", "Super", "Primary Total", "Special Total", "Heavy Total", "Ability Total", "Other Total"]}
+		team_hash = {:player => {:kills => {}}, :alpha => {:kills => {}}, :bravo => {:kills => {}}, :names => ["Hand Cannon", "Scout Rifle", "Pulse Rifle", "Auto Rifle", "Fusion Rifle", "Sniper", "Sidearm", "Shotgun", "Rocket Launcher", "Heavy Machinegun", "Sword", "Grenade", "Melee", "Super", "Primary Total", "Special Total", "Heavy Total", "Ability Total", "Other Total"]}
 			
 			#{"HandCannon" => "Hand Cannon", "ScoutRifle" => "Scout Rifle", "PulseRifle" => "Pulse Rifle", "AutoRifle" => "Auto Rifle", "FusionRifle" => "Fusion Rifle", "Sniper" => "Sniper", "SideArm" => "Sidearm", "Shotgun" => "Shotgun", "RocketLauncher" => "Rocket Launcher", "Machinegun" => "Heavy Machinegun", "Sword" => "Sword", "Grenade" => "Grenade", "Melee" => "Melee", "Super" => "Super", :primary => "Primary Total", :special => "Special Total", :heavy => "Heavy Total", :ability => "Ability Total", :other => "Other Total"}}
 		puts team_hash
+
+		player_array.each_with_index do |player, idx|
+			if player[:player][:displayName] == mainGt
+				puts "Main player identified"
+				player[:player][:kills].each_pair do |key, val|
+					if team_hash[:player][:kills][key].nil?
+						team_hash[:player][:kills][key] = 0
+						team_hash[:player][:kills][key] += player[:player][:kills][key]
+					else
+						team_hash[:player][:kills][key] += player[:player][:kills][key]
+					end
+				end
+			end
+		end
+
 
 		player_array.each_with_index do |player, idx|
 			if player[:player][:team] == "Alpha"
@@ -72,14 +87,14 @@ class Report < ApplicationRecord
 		return team_hash
 	end
 
-    def getReport(activityId)
+    def getReport(activityId, mainGt)
 		report_url = "https://www.bungie.net/platform/Destiny/Stats/PostGameCarnageReport/#{activityId}"
 		report_data_response = Unirest.get(report_url, headers:{'X-API-Key' => 'fbd958ef65034d4cad9fce1be14fbf29'})
 		report_data = report_data_response.body
 		
 		report_detail = createKillDetail(report_data)
-		team_detail = createTeamDetail(report_detail)
-		return report_detail, team_detail
+		team_detail = createTeamDetail(report_detail, mainGt)
+		return team_detail
 	end
 
 

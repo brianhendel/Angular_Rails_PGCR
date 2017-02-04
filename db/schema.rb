@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20161221074215) do
 
   create_table "reports", force: :cascade do |t|
     t.integer  "activityId", limit: 8
+    t.string   "mainGt"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end

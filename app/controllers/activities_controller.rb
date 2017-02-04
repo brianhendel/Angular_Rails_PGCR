@@ -5,7 +5,7 @@ class ActivitiesController < ApplicationController
         @activity = Activity.new(activity_params)
         activity_data = @activity.getActivities(@activity.charId, @activity.membership_id)
 
-        puts activity_data.to_json
+        #puts activity_data.to_json
         render json: activity_data
     end
 

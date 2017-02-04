@@ -24,7 +24,7 @@
 
 <div class="container">
 	<div class="row">
-		<div ng-show="charSet" class="col-xs-12 col-md-6">
+		<div ng-show="charSet" class="col-xs-12 col-md-7">
 			<table class="table table-striped">
 				<thead>
 					<tr>
@@ -35,11 +35,12 @@
 						<th class="text-center">Assists</th>
 						<th class="text-center">K/D Ratio</th>
 						<!--<th class="text-center">KA/D Ratio</th>-->
+						<th class="text-center">Team</th>
 						<th class="text-center">Standing</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="a in activities.Response.data.activities" ng-click="selectActivity(a)">
+					<tr ng-repeat="a in activities.Response.data.activities" ng-click="selectActivity(a, mainGt)">
 						<td>{{a.activityDetails.mode}}</td>
 						<td class="text-center">{{a.values.score.basic.displayValue}}</td>
 						<td class="text-center">{{a.values.kills.basic.displayValue}}</td>
@@ -47,58 +48,142 @@
 						<td class="text-center">{{a.values.assists.basic.displayValue}}</td>
 						<td class="text-center">{{(a.values.kills.basic.value/a.values.deaths.basic.value).toFixed(2)}}</td>
 						<!--<td class="text-center">{{((a.values.kills.basic.value+a.values.assists.basic.value)/a.values.deaths.basic.value).toFixed(2)}}</td>-->
+						<td class="text-center">{{a.values.team.basic.displayValue}}</td>
 						<td class="text-center">{{a.values.standing.basic.displayValue}}</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 
-		<div ng-show="actSet" class="col-xs-12 col-md-6">
+		<div ng-show="actSet" class="col-xs-12 col-md-5">
 			<table class="table table-striped">
 				<thead>
 					<tr>
 						<th>Kill Type</th>
 						<th class="text-center">{{mainGt}}</th>
-						<th class="text-center">Fireteam</th>
 						<th class="text-center">Alpha</th>
 						<th class="text-center">Bravo</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr ng-click="">
-						<td>Primary Total</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
+						<td>Hand Cannon</td>
+						<td class="text-center">{{report.player.kills.HandCannon}}</td>
+						<td class="text-center">{{report.alpha.kills.HandCannon}}</td>
+						<td class="text-center">{{report.bravo.kills.HandCannon}}</td>
 					</tr>
 					<tr ng-click="">
-						<td>Special Total</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
+						<td>Pulse Rifle</td>
+						<td class="text-center">{{report.player.kills.PulseRifle}}</td>
+						<td class="text-center">{{report.alpha.kills.PulseRifle}}</td>
+						<td class="text-center">{{report.bravo.kills.PulseRifle}}</td>
 					</tr>
 					<tr ng-click="">
-						<td>Heavy Total</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
+						<td>Scout Rifle</td>
+						<td class="text-center">{{report.player.kills.ScoutRifle}}</td>
+						<td class="text-center">{{report.alpha.kills.ScoutRifle}}</td>
+						<td class="text-center">{{report.bravo.kills.ScoutRifle}}</td>
 					</tr>
 					<tr ng-click="">
-						<td>Ability Total</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
+						<td>Auto Rifle</td>
+						<td class="text-center">{{report.player.kills.AutoRifle}}</td>
+						<td class="text-center">{{report.alpha.kills.AutoRifle}}</td>
+						<td class="text-center">{{report.bravo.kills.AutoRifle}}</td>
+					</tr>					
+					<tr style="font-weight:bold" ng-click="">
+						<td>__Primary Total</td>
+						<td class="text-center">{{report.player.kills.primary}}</td>
+						<td class="text-center">{{report.alpha.kills.primary}}</td>
+						<td class="text-center">{{report.bravo.kills.primary}}</td>
+					</tr>
+
+					<tr ng-click="">
+						<td>Sniper Rifle</td>
+						<td class="text-center">{{report.player.kills.Sniper}}</td>
+						<td class="text-center">{{report.alpha.kills.Sniper}}</td>
+						<td class="text-center">{{report.bravo.kills.Sniper}}</td>
+					</tr>		
+					<tr ng-click="">
+						<td>Shotgun</td>
+						<td class="text-center">{{report.player.kills.Shotgun}}</td>
+						<td class="text-center">{{report.alpha.kills.Shotgun}}</td>
+						<td class="text-center">{{report.bravo.kills.Shotgun}}</td>
+					</tr>		
+					<tr ng-click="">
+						<td>Fusion Rifle</td>
+						<td class="text-center">{{report.player.kills.FusionRifle}}</td>
+						<td class="text-center">{{report.alpha.kills.FusionRifle}}</td>
+						<td class="text-center">{{report.bravo.kills.FusionRifle}}</td>
+					</tr>		
+					<tr ng-click="">
+						<td>Sidearm</td>
+						<td class="text-center">{{report.player.kills.SideArm}}</td>
+						<td class="text-center">{{report.alpha.kills.SideArm}}</td>
+						<td class="text-center">{{report.bravo.kills.SideArm}}</td>
+					</tr>		
+					<tr style="font-weight:bold" ng-click="">
+						<td>__Special Total</td>
+						<td class="text-center">{{report.player.kills.special}}</td>
+						<td class="text-center">{{report.alpha.kills.special}}</td>
+						<td class="text-center">{{report.bravo.kills.special}}</td>
+					</tr>
+
+
+					<tr ng-click="">
+						<td>Rocket Launcher</td>
+						<td class="text-center">{{report.player.kills.RocketLauncher}}</td>
+						<td class="text-center">{{report.alpha.kills.RocketLauncher}}</td>
+						<td class="text-center">{{report.bravo.kills.RocketLauncher}}</td>
 					</tr>
 					<tr ng-click="">
-						<td>Total Kills</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
-						<td class="text-center">{{}}</td>
+						<td>Heavy Machine Gun</td>
+						<td class="text-center">{{report.player.kills.Machinegun}}</td>
+						<td class="text-center">{{report.alpha.kills.Machinegun}}</td>
+						<td class="text-center">{{report.bravo.kills.Machinegun}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Sword</td>
+						<td class="text-center">{{report.player.kills.Sword}}</td>
+						<td class="text-center">{{report.alpha.kills.Sword}}</td>
+						<td class="text-center">{{report.bravo.kills.Sword}}</td>
+					</tr>
+					<tr style="font-weight:bold" ng-click="">
+						<td>__Heavy Total</td>
+						<td class="text-center">{{report.player.kills.heavy}}</td>
+						<td class="text-center">{{report.alpha.kills.heavy}}</td>
+						<td class="text-center">{{report.bravo.kills.heavy}}</td>
+					</tr>
+
+
+					<tr ng-click="">
+						<td>Super</td>
+						<td class="text-center">{{report.player.kills.Super}}</td>
+						<td class="text-center">{{report.alpha.kills.Super}}</td>
+						<td class="text-center">{{report.bravo.kills.Super}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Grenade</td>
+						<td class="text-center">{{report.player.kills.Grenade}}</td>
+						<td class="text-center">{{report.alpha.kills.Grenade}}</td>
+						<td class="text-center">{{report.bravo.kills.Grenade}}</td>
+					</tr>
+					<tr ng-click="">
+						<td>Melee</td>
+						<td class="text-center">{{report.player.kills.Melee}}</td>
+						<td class="text-center">{{report.alpha.kills.Melee}}</td>
+						<td class="text-center">{{report.bravo.kills.Melee}}</td>
+					</tr>
+					<tr style="font-weight:bold" ng-click="">
+						<td>__Ability Total</td>
+						<td class="text-center">{{report.player.kills.ability}}</td>
+						<td class="text-center">{{report.alpha.kills.ability}}</td>
+						<td class="text-center">{{report.bravo.kills.ability}}</td>
+					</tr>
+					<tr style="font-weight:bold" ng-click="">
+						<td>____Total Kills</td>
+						<td class="text-center">{{report.player.kills.total}}</td>
+						<td class="text-center">{{report.alpha.kills.total}}</td>
+						<td class="text-center">{{report.bravo.kills.total}}</td>
 					</tr>
 				</tbody>
 			</table>
