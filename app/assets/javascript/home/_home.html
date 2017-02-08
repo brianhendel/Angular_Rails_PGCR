@@ -25,7 +25,7 @@
 <div class="container">
 	<div class="row">
 		<div ng-show="charSet" class="col-xs-12 col-md-7">
-			<table class="table table-striped">
+			<table class="table table-striped table-hover">
 				<thead>
 					<tr>
 						<th>Game Type</th>
@@ -56,7 +56,7 @@
 		</div>
 
 		<div ng-show="actSet" class="col-xs-12 col-md-5">
-			<table class="table table-striped">
+			<table class="table">
 				<thead>
 					<tr>
 						<th>Kill Type</th>
@@ -90,8 +90,8 @@
 						<td class="text-center">{{report.alpha.kills.AutoRifle}}</td>
 						<td class="text-center">{{report.bravo.kills.AutoRifle}}</td>
 					</tr>					
-					<tr style="font-weight:bold" ng-click="">
-						<td>__Primary Total</td>
+					<tr class="row-shading" style="font-weight:bold" ng-click="">
+						<td>Primary Total</td>
 						<td class="text-center">{{report.player.kills.primary}}</td>
 						<td class="text-center">{{report.alpha.kills.primary}}</td>
 						<td class="text-center">{{report.bravo.kills.primary}}</td>
@@ -121,8 +121,8 @@
 						<td class="text-center">{{report.alpha.kills.SideArm}}</td>
 						<td class="text-center">{{report.bravo.kills.SideArm}}</td>
 					</tr>		
-					<tr style="font-weight:bold" ng-click="">
-						<td>__Special Total</td>
+					<tr class="row-shading" style="font-weight:bold" ng-click="">
+						<td>Special Total</td>
 						<td class="text-center">{{report.player.kills.special}}</td>
 						<td class="text-center">{{report.alpha.kills.special}}</td>
 						<td class="text-center">{{report.bravo.kills.special}}</td>
@@ -147,8 +147,8 @@
 						<td class="text-center">{{report.alpha.kills.Sword}}</td>
 						<td class="text-center">{{report.bravo.kills.Sword}}</td>
 					</tr>
-					<tr style="font-weight:bold" ng-click="">
-						<td>__Heavy Total</td>
+					<tr class="row-shading" style="font-weight:bold" ng-click="">
+						<td>Heavy Total</td>
 						<td class="text-center">{{report.player.kills.heavy}}</td>
 						<td class="text-center">{{report.alpha.kills.heavy}}</td>
 						<td class="text-center">{{report.bravo.kills.heavy}}</td>
@@ -173,14 +173,14 @@
 						<td class="text-center">{{report.alpha.kills.Melee}}</td>
 						<td class="text-center">{{report.bravo.kills.Melee}}</td>
 					</tr>
-					<tr style="font-weight:bold" ng-click="">
-						<td>__Ability Total</td>
+					<tr class="row-shading" style="font-weight:bold" ng-click="">
+						<td>Ability Total</td>
 						<td class="text-center">{{report.player.kills.ability}}</td>
 						<td class="text-center">{{report.alpha.kills.ability}}</td>
 						<td class="text-center">{{report.bravo.kills.ability}}</td>
 					</tr>
-					<tr style="font-weight:bold" ng-click="">
-						<td>____Total Kills</td>
+					<tr class="row-shading" style="font-weight:bold" ng-click="">
+						<td>Total Kills</td>
 						<td class="text-center">{{report.player.kills.total}}</td>
 						<td class="text-center">{{report.alpha.kills.total}}</td>
 						<td class="text-center">{{report.bravo.kills.total}}</td>
@@ -190,8 +190,3 @@
 		</div>
 	</div>
 </div>
-
-<!--
-<h4>{{memberData.Response.data.membershipId}}</h4>
-
--->

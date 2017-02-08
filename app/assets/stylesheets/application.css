@@ -51,7 +51,6 @@
     padding-bottom: 3px;
 }
 
-.table > .table-striped > tbody > tr > .selected {
-    background-color: yellow;
-    color: blue;
+.row-shading {
+    background-color: lightblue;
 }
